@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 21 13:27:31 2018
+Created on Thu Jun 21 13:27:31 2019
 
 @author: sss
 """
@@ -14,13 +14,13 @@ import time
 time_start = time.time()
 
 # Playing video from file:    
-cap = cv2.VideoCapture('./videos/test.mp4')
+cap = cv2.VideoCapture('./videos/writing/Introduction to Logarithms (2 of 2_ Definition & Basic Principles).mp4')
 
 # Find the number of frames
 video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 print ("Number of frames: ", video_length)
 
-num = 525
+num = 203
 count = 0
 
 while cap.isOpened():
@@ -33,7 +33,7 @@ while cap.isOpened():
     if(count % 240 == 0): 
         # Saves image of the current frame in jpg file
         num += 1
-        name = './animation/animation_' + str(num) + '.jpg'
+        name = './writing/writing' + str(num) + '.jpg'
         print ('Creating...' + name)
         cv2.imwrite(name, frame)
     
