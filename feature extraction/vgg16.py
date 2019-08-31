@@ -13,8 +13,8 @@ cnn_update_weights_path = './models/vgg16_model_weight.h5'
 cnn_update_model = './models/vgg16_model.h5'
 train_data_dir = './dataset/training'
 validation_data_dir = './dataset/test'
-nb_train_samples = 600
-nb_validation_samples = 120
+nb_train_samples = 800
+nb_validation_samples = 160
 epochs = 30
 batch_size = 20
 
@@ -54,19 +54,19 @@ def save_bottlebeck_features():
 def train_top_model():
     train_data = np.load(open('vgg16_bottleneck_features_train.npy','rb'))
     train_labels = np.array(
-        [0] * (nb_train_samples // 3) + [1] * (nb_train_samples // 3) + [2] * (nb_train_samples // 3))
-    train_labels = to_categorical(train_labels, num_classes=3)
+        [0] * (nb_train_samples // 4) + [1] * (nb_train_samples // 4) + [2] * (nb_train_samples // 4)+ [3] * (nb_train_samples // 4))
+    train_labels = to_categorical(train_labels, num_classes=4)
 
     validation_data = np.load(open('vgg16_bottleneck_features_validation.npy','rb'))
     validation_labels = np.array(
-        [0] * (nb_validation_samples // 3) + [1] * (nb_validation_samples // 3) + [2] * (nb_validation_samples // 3))
-    validation_labels = to_categorical(validation_labels, num_classes=3)
+        [0] * (nb_validation_samples // 4) + [1] * (nb_validation_samples // 4) + [2] * (nb_validation_samples // 4) + [3] * (nb_validation_samples // 4))
+    validation_labels = to_categorical(validation_labels, num_classes=4)
 
     model = Sequential()
     model.add(Flatten(input_shape=train_data.shape[1:]))
     model.add(Dense(256, activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(3, activation='softmax'))
+    model.add(Dense(4, activation='softmax'))
 
     model.compile(optimizer='adam',
                   loss='categorical_crossentropy', metrics=['accuracy'])
