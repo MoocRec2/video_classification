@@ -14,7 +14,7 @@ datagen = ImageDataGenerator(
     horizontal_flip=True,
     fill_mode='nearest')
 
-img = load_img('writing/animation_211.jpg')  # this is a PIL image
+img = load_img('writing/writing276.jpg')  # this is a PIL image
 
 # convert image to numpy array with shape (3, width, height)
 img_arr = img_to_array(img)
@@ -29,7 +29,7 @@ for batch in datagen.flow(
     img_arr,
     batch_size=1,
     save_to_dir='data/writing',
-    save_prefix='writing_1B',
+    save_prefix='writing_1F',
     save_format='jpg'):
     i += 1
     if i > 9:

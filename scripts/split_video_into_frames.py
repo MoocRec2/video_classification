@@ -14,13 +14,13 @@ import time
 time_start = time.time()
 
 # Playing video from file:    
-cap = cv2.VideoCapture('./videos/animations/Simple Machines Video for Kids Kindergarten,Preschoolers,Toddlers.mp4')
+cap = cv2.VideoCapture('./videos/writing/Everything about Logarithms in 5 minutes.mp4')
 
 # Find the number of frames
 video_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 print ("Number of frames: ", video_length)
 
-num = 335
+num = 288
 count = 0
 
 while cap.isOpened():
@@ -33,7 +33,7 @@ while cap.isOpened():
     if(count % 240 == 0): 
         # Saves image of the current frame in jpg file
         num += 1
-        name = './animation/animation' + str(num) + '.jpg'
+        name = './writing/writing' + str(num) + '.jpg'
         print ('Creating...' + name)
         cv2.imwrite(name, frame)
     
